@@ -10,14 +10,24 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="right_arm">
-        <chain base_link="torso" tip_link="r_wrist" />
+        <chain base_link="torso" tip_link="r_gripper" />
     </group>
     <group name="left_arm">
-        <chain base_link="torso" tip_link="l_wrist" />
+        <chain base_link="torso" tip_link="l_gripper" />
     </group>
     <group name="both_arms">
-        <group name="left_arm" />
         <group name="right_arm" />
+        <group name="left_arm" />
+    </group>
+    <group name="right_arm_wholebody">
+        <chain base_link="Tibia" tip_link="r_gripper" />
+    </group>
+    <group name="left_arm_wholebody">
+        <chain base_link="Tibia" tip_link="l_gripper" />
+    </group>
+    <group name="both_arms_wholebody">
+        <group name="right_arm_wholebody" />
+        <group name="left_arm_wholebody" />
     </group>
     <group name="right_hand">
         <link name="RFinger11_link" />
@@ -62,10 +72,10 @@
         <chain base_link="torso" tip_link="Head" />
     </group>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="left_eef" parent_link="l_wrist" group="left_hand" />
-    <end_effector name="right_eef" parent_link="r_wrist" group="right_hand" />
+    <end_effector name="left_eef" parent_link="l_gripper" group="left_hand" />
+    <end_effector name="right_eef" parent_link="r_gripper" group="right_hand" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="virtual_odom" type="floating" parent_frame="odom" child_link="base_link" />
+    <virtual_joint name="virtual_odom" type="floating" parent_frame="odom" child_link="base_footprint" />
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
     <passive_joint name="virtual_odom" />
     <passive_joint name="LFinger11" />
@@ -96,9 +106,9 @@
     <passive_joint name="RFinger43" />
     <passive_joint name="RThumb1" />
     <passive_joint name="RThumb2" />
+    <passive_joint name="WheelB" />
     <passive_joint name="WheelFL" />
     <passive_joint name="WheelFR" />
-    <passive_joint name="WheelB" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="Head" link2="Hip" reason="Never" />
     <disable_collisions link1="Head" link2="LShoulder" reason="Never" />
@@ -111,13 +121,11 @@
     <disable_collisions link1="Head" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="Hip" link2="LBicep" reason="Never" />
     <disable_collisions link1="Hip" link2="LElbow" reason="Never" />
-    <disable_collisions link1="Hip" link2="LForeArm" reason="Never" />
     <disable_collisions link1="Hip" link2="LShoulder" reason="Never" />
     <disable_collisions link1="Hip" link2="Neck" reason="Never" />
     <disable_collisions link1="Hip" link2="Pelvis" reason="Adjacent" />
     <disable_collisions link1="Hip" link2="RBicep" reason="Never" />
     <disable_collisions link1="Hip" link2="RElbow" reason="Never" />
-    <disable_collisions link1="Hip" link2="RForeArm" reason="Never" />
     <disable_collisions link1="Hip" link2="RShoulder" reason="Never" />
     <disable_collisions link1="Hip" link2="Tibia" reason="Never" />
     <disable_collisions link1="Hip" link2="WheelB_link" reason="Never" />
@@ -230,7 +238,6 @@
     <disable_collisions link1="LFinger11_link" link2="RElbow" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RFinger11_link" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RFinger12_link" reason="Never" />
-    <disable_collisions link1="LFinger11_link" link2="RFinger13_link" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RFinger21_link" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RFinger22_link" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RFinger23_link" reason="Never" />
@@ -243,7 +250,6 @@
     <disable_collisions link1="LFinger11_link" link2="RForeArm" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="RThumb1_link" reason="Never" />
-    <disable_collisions link1="LFinger11_link" link2="RThumb2_link" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger11_link" link2="WheelFL_link" reason="Never" />
@@ -281,13 +287,11 @@
     <disable_collisions link1="LFinger12_link" link2="RFinger43_link" reason="Never" />
     <disable_collisions link1="LFinger12_link" link2="RForeArm" reason="Never" />
     <disable_collisions link1="LFinger12_link" link2="RShoulder" reason="Never" />
-    <disable_collisions link1="LFinger12_link" link2="RThumb1_link" reason="Never" />
-    <disable_collisions link1="LFinger12_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="LFinger12_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger12_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger12_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger12_link" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="LFinger12_link" link2="l_wrist" reason="Never" />
-    <disable_collisions link1="LFinger12_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LFinger21_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LFinger22_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LFinger23_link" reason="Never" />
@@ -300,7 +304,6 @@
     <disable_collisions link1="LFinger13_link" link2="LForeArm" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LShoulder" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LThumb1_link" reason="Never" />
-    <disable_collisions link1="LFinger13_link" link2="LThumb2_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="Neck" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="RBicep" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="RElbow" reason="Never" />
@@ -320,12 +323,10 @@
     <disable_collisions link1="LFinger13_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="RThumb2_link" reason="Never" />
-    <disable_collisions link1="LFinger13_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="l_wrist" reason="Never" />
-    <disable_collisions link1="LFinger13_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="LFinger22_link" reason="Adjacent" />
     <disable_collisions link1="LFinger21_link" link2="LFinger23_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="LFinger31_link" reason="Never" />
@@ -346,7 +347,6 @@
     <disable_collisions link1="LFinger21_link" link2="RFinger13_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RFinger21_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RFinger22_link" reason="Never" />
-    <disable_collisions link1="LFinger21_link" link2="RFinger23_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RFinger31_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RFinger32_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RFinger33_link" reason="Never" />
@@ -357,6 +357,7 @@
     <disable_collisions link1="LFinger21_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="LFinger21_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger21_link" link2="WheelFR_link" reason="Never" />
@@ -381,7 +382,6 @@
     <disable_collisions link1="LFinger22_link" link2="RFinger13_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RFinger21_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RFinger22_link" reason="Never" />
-    <disable_collisions link1="LFinger22_link" link2="RFinger23_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RFinger31_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RFinger32_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RFinger33_link" reason="Never" />
@@ -392,6 +392,7 @@
     <disable_collisions link1="LFinger22_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="LFinger22_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger22_link" link2="WheelFR_link" reason="Never" />
@@ -426,12 +427,10 @@
     <disable_collisions link1="LFinger23_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger23_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="LFinger23_link" link2="RThumb2_link" reason="Never" />
-    <disable_collisions link1="LFinger23_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger23_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger23_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger23_link" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="LFinger23_link" link2="l_wrist" reason="Never" />
-    <disable_collisions link1="LFinger23_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="LFinger32_link" reason="Adjacent" />
     <disable_collisions link1="LFinger31_link" link2="LFinger33_link" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="LFinger41_link" reason="Never" />
@@ -452,7 +451,6 @@
     <disable_collisions link1="LFinger31_link" link2="RFinger23_link" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="RFinger31_link" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="RFinger32_link" reason="Never" />
-    <disable_collisions link1="LFinger31_link" link2="RFinger33_link" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="RFinger41_link" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="RFinger42_link" reason="Never" />
     <disable_collisions link1="LFinger31_link" link2="RFinger43_link" reason="Never" />
@@ -485,14 +483,13 @@
     <disable_collisions link1="LFinger32_link" link2="RFinger23_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RFinger31_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RFinger32_link" reason="Never" />
-    <disable_collisions link1="LFinger32_link" link2="RFinger33_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RFinger41_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RFinger42_link" reason="Never" />
-    <disable_collisions link1="LFinger32_link" link2="RFinger43_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RForeArm" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="LFinger32_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger32_link" link2="WheelFR_link" reason="Never" />
@@ -524,11 +521,11 @@
     <disable_collisions link1="LFinger33_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="LFinger33_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="LFinger33_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="LFinger33_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="LFinger33_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="LFinger33_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger33_link" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="LFinger33_link" link2="l_wrist" reason="Never" />
-    <disable_collisions link1="LFinger33_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="LFinger41_link" link2="LFinger42_link" reason="Adjacent" />
     <disable_collisions link1="LFinger41_link" link2="LFinger43_link" reason="Never" />
     <disable_collisions link1="LFinger41_link" link2="LForeArm" reason="Never" />
@@ -559,6 +556,7 @@
     <disable_collisions link1="LFinger41_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger41_link" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="LFinger41_link" link2="l_wrist" reason="Adjacent" />
+    <disable_collisions link1="LFinger41_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="LFinger42_link" link2="LFinger43_link" reason="Adjacent" />
     <disable_collisions link1="LFinger42_link" link2="LForeArm" reason="Never" />
     <disable_collisions link1="LFinger42_link" link2="LShoulder" reason="Never" />
@@ -588,6 +586,7 @@
     <disable_collisions link1="LFinger42_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="LFinger42_link" link2="WheelFR_link" reason="Never" />
     <disable_collisions link1="LFinger42_link" link2="l_wrist" reason="Never" />
+    <disable_collisions link1="LFinger42_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="LFinger43_link" link2="LForeArm" reason="Never" />
     <disable_collisions link1="LFinger43_link" link2="LShoulder" reason="Never" />
     <disable_collisions link1="LFinger43_link" link2="LThumb1_link" reason="Never" />
@@ -621,7 +620,6 @@
     <disable_collisions link1="LForeArm" link2="LThumb1_link" reason="Never" />
     <disable_collisions link1="LForeArm" link2="LThumb2_link" reason="Never" />
     <disable_collisions link1="LForeArm" link2="Neck" reason="Never" />
-    <disable_collisions link1="LForeArm" link2="Pelvis" reason="Never" />
     <disable_collisions link1="LForeArm" link2="RBicep" reason="Never" />
     <disable_collisions link1="LForeArm" link2="RElbow" reason="Never" />
     <disable_collisions link1="LForeArm" link2="RFinger11_link" reason="Never" />
@@ -759,6 +757,7 @@
     <disable_collisions link1="Pelvis" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="Pelvis" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="Pelvis" link2="WheelFR_link" reason="Never" />
+    <disable_collisions link1="Pelvis" link2="torso" reason="Never" />
     <disable_collisions link1="RBicep" link2="RElbow" reason="Adjacent" />
     <disable_collisions link1="RBicep" link2="RFinger11_link" reason="Never" />
     <disable_collisions link1="RBicep" link2="RFinger12_link" reason="Never" />
@@ -820,6 +819,7 @@
     <disable_collisions link1="RFinger11_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger11_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="RFinger11_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="RFinger11_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger11_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger11_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger11_link" link2="WheelFR_link" reason="Never" />
@@ -839,6 +839,7 @@
     <disable_collisions link1="RFinger12_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger12_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="RFinger12_link" link2="RThumb2_link" reason="Never" />
+    <disable_collisions link1="RFinger12_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger12_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger12_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger12_link" link2="WheelFR_link" reason="Never" />
@@ -856,7 +857,6 @@
     <disable_collisions link1="RFinger13_link" link2="RForeArm" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="RThumb1_link" reason="Never" />
-    <disable_collisions link1="RFinger13_link" link2="RThumb2_link" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="WheelFL_link" reason="Never" />
@@ -896,7 +896,6 @@
     <disable_collisions link1="RFinger22_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger22_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger22_link" link2="WheelFR_link" reason="Never" />
-    <disable_collisions link1="RFinger22_link" link2="l_wrist" reason="Never" />
     <disable_collisions link1="RFinger22_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="RFinger23_link" link2="RFinger31_link" reason="Never" />
     <disable_collisions link1="RFinger23_link" link2="RFinger32_link" reason="Never" />
@@ -912,9 +911,7 @@
     <disable_collisions link1="RFinger23_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger23_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger23_link" link2="WheelFR_link" reason="Never" />
-    <disable_collisions link1="RFinger23_link" link2="l_wrist" reason="Never" />
     <disable_collisions link1="RFinger23_link" link2="r_wrist" reason="Never" />
-    <disable_collisions link1="RFinger23_link" link2="torso" reason="Never" />
     <disable_collisions link1="RFinger31_link" link2="RFinger32_link" reason="Adjacent" />
     <disable_collisions link1="RFinger31_link" link2="RFinger33_link" reason="Never" />
     <disable_collisions link1="RFinger31_link" link2="RFinger41_link" reason="Never" />
@@ -938,7 +935,6 @@
     <disable_collisions link1="RFinger32_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger32_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="RFinger32_link" link2="RThumb2_link" reason="Never" />
-    <disable_collisions link1="RFinger32_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger32_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger32_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger32_link" link2="WheelFR_link" reason="Never" />
@@ -951,11 +947,9 @@
     <disable_collisions link1="RFinger33_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger33_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="RFinger33_link" link2="RThumb2_link" reason="Never" />
-    <disable_collisions link1="RFinger33_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger33_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger33_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger33_link" link2="WheelFR_link" reason="Never" />
-    <disable_collisions link1="RFinger33_link" link2="l_wrist" reason="Never" />
     <disable_collisions link1="RFinger33_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="RFinger41_link" link2="RFinger42_link" reason="Adjacent" />
     <disable_collisions link1="RFinger41_link" link2="RFinger43_link" reason="Never" />
@@ -974,7 +968,6 @@
     <disable_collisions link1="RFinger42_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger42_link" link2="RThumb1_link" reason="Never" />
     <disable_collisions link1="RFinger42_link" link2="RThumb2_link" reason="Never" />
-    <disable_collisions link1="RFinger42_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger42_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger42_link" link2="WheelFL_link" reason="Never" />
     <disable_collisions link1="RFinger42_link" link2="WheelFR_link" reason="Never" />
@@ -1039,4 +1032,5 @@
     <disable_collisions link1="WheelFR_link" link2="l_wrist" reason="Never" />
     <disable_collisions link1="WheelFR_link" link2="r_wrist" reason="Never" />
     <disable_collisions link1="WheelFR_link" link2="torso" reason="Never" />
+    <disable_collisions link1="l_wrist" link2="r_wrist" reason="Never" />
 </robot>
