@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: Maxime Busy
     author_email: mbusy@todo.com
-    generated_timestamp: 1553079307
+    generated_timestamp: 1553081121

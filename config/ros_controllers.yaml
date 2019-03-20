@@ -34,16 +34,6 @@ JulietteY20MP:
     type: joint_state_controller/JointStateController
     publish_rate: 50
   controller_list:
-    - name: right_arm_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        - RShoulderPitch
-        - RShoulderRoll
-        - RElbowYaw
-        - RElbowRoll
-        - RWristYaw
     - name: left_arm_controller
       action_ns: follow_joint_trajectory
       default: True
@@ -54,22 +44,19 @@ JulietteY20MP:
         - LElbowYaw
         - LElbowRoll
         - LWristYaw
-    - name: both_arms_controller
+        - LHand
+    - name: right_arm_controller
       action_ns: follow_joint_trajectory
       default: True
       type: FollowJointTrajectory
       joints:
-        - LShoulderPitch
-        - LShoulderRoll
-        - LElbowYaw
-        - LElbowRoll
-        - LWristYaw
         - RShoulderPitch
         - RShoulderRoll
         - RElbowYaw
         - RElbowRoll
         - RWristYaw
-    - name: right_arm_wholebody_controller
+        - RHand
+    - name: pelvis_controller
       action_ns: follow_joint_trajectory
       default: True
       type: FollowJointTrajectory
@@ -77,60 +64,6 @@ JulietteY20MP:
         - KneePitch
         - HipPitch
         - HipRoll
-        - RShoulderPitch
-        - RShoulderRoll
-        - RElbowYaw
-        - RElbowRoll
-        - RWristYaw
-    - name: left_arm_wholebody_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        - KneePitch
-        - HipPitch
-        - HipRoll
-        - LShoulderPitch
-        - LShoulderRoll
-        - LElbowYaw
-        - LElbowRoll
-        - LWristYaw
-    - name: both_arms_wholebody_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        - KneePitch
-        - HipPitch
-        - HipRoll
-        - LShoulderPitch
-        - LShoulderRoll
-        - LElbowYaw
-        - LElbowRoll
-        - LWristYaw
-        - RShoulderPitch
-        - RShoulderRoll
-        - RElbowYaw
-        - RElbowRoll
-        - RWristYaw
-    - name: right_hand_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        []
-    - name: left_hand_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        []
-    - name: base_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        []
     - name: head_controller
       action_ns: follow_joint_trajectory
       default: True
@@ -138,3 +71,15 @@ JulietteY20MP:
       joints:
         - HeadYaw
         - HeadPitch
+    - name: left_hand_controller
+      action_ns: follow_joint_trajectory
+      default: True
+      type: FollowJointTrajectory
+      joints:
+        LHand
+    - name: right_hand_controller
+      action_ns: follow_joint_trajectory
+      default: True
+      type: FollowJointTrajectory
+      joints:
+        RHand

@@ -13,6 +13,11 @@
         <chain base_link="torso" tip_link="r_gripper" />
     </group>
     <group name="left_arm">
+        <joint name="LShoulderPitch" />
+        <joint name="LShoulderRoll" />
+        <joint name="LElbowRoll" />
+        <joint name="LElbowYaw" />
+        <joint name="LWristYaw" />
         <chain base_link="torso" tip_link="l_gripper" />
     </group>
     <group name="both_arms">
@@ -62,6 +67,9 @@
         <chain base_link="torso" tip_link="Head" />
     </group>
     <group name="pelvis">
+        <joint name="KneePitch" />
+        <joint name="HipPitch" />
+        <joint name="HipRoll" />
         <chain base_link="Tibia" tip_link="torso" />
     </group>
     <group name="right_arm_wholebody">
