@@ -177,7 +177,7 @@ left_arm:
   projection_evaluator: joints(LShoulderPitch,LShoulderRoll)
   longest_valid_segment_fraction: 0.005
 both_arms:
-  default_planner_config: ""
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
@@ -205,7 +205,7 @@ both_arms:
   projection_evaluator: joints(LShoulderPitch,LShoulderRoll)
   longest_valid_segment_fraction: 0.005
 right_hand:
-  default_planner_config: ""
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
@@ -233,7 +233,7 @@ right_hand:
   projection_evaluator: joints(RFinger11,RFinger12)
   longest_valid_segment_fraction: 0.005
 left_hand:
-  default_planner_config: ""
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
@@ -261,7 +261,7 @@ left_hand:
   projection_evaluator: joints(LFinger11,LFinger12)
   longest_valid_segment_fraction: 0.005
 base:
-  default_planner_config: ""
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
@@ -287,7 +287,7 @@ base:
     - SPARS
     - SPARStwo
 head:
-  default_planner_config: None
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
@@ -343,7 +343,7 @@ pelvis:
   projection_evaluator: joints(KneePitch,HipPitch)
   longest_valid_segment_fraction: 0.005
 right_arm_wholebody:
-  default_planner_config: ""
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
@@ -371,7 +371,7 @@ right_arm_wholebody:
   projection_evaluator: joints(KneePitch,HipPitch)
   longest_valid_segment_fraction: 0.005
 left_arm_wholebody:
-  default_planner_config: ""
+  default_planner_config: RRTConnect
   planner_configs:
     - SBL
     - EST
