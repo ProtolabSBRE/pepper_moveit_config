@@ -1,8 +1,11 @@
 moveit_setup_assistant_config:
   URDF:
-    package: pepper_description
-    relative_path: urdf/pepper1.0_generated_urdf/pepper.urdf
+    package: naoqi_driver
+    relative_path: share/urdf/pepper.urdf
+    xacro_args: "--inorder "
   SRDF:
     relative_path: config/JulietteY20MP.srdf
   CONFIG:
-    generated_timestamp: 1440764030
+    author_name: Maxime Busy
+    author_email: mbusy@todo.com
+    generated_timestamp: 1553079307

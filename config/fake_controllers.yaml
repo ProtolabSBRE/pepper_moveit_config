@@ -29,6 +29,24 @@ controller_list:
       - RElbowRoll
       - RWristYaw
       - RHand
+  - name: fake_right_hand_controller
+    joints:
+      - RHand
+  - name: fake_left_hand_controller
+    joints:
+      - LHand
+  - name: fake_base_controller
+    joints:
+      []
+  - name: fake_head_controller
+    joints:
+      - HeadYaw
+      - HeadPitch
+  - name: fake_pelvis_controller
+    joints:
+      - KneePitch
+      - HipPitch
+      - HipRoll
   - name: fake_right_arm_wholebody_controller
     joints:
       - KneePitch
@@ -51,33 +69,3 @@ controller_list:
       - LElbowRoll
       - LWristYaw
       - LHand
-  - name: fake_both_arms_wholebody_controller
-    joints:
-      - KneePitch
-      - HipPitch
-      - HipRoll
-      - LShoulderPitch
-      - LShoulderRoll
-      - LElbowYaw
-      - LElbowRoll
-      - LWristYaw
-      - LHand
-      - RShoulderPitch
-      - RShoulderRoll
-      - RElbowYaw
-      - RElbowRoll
-      - RWristYaw
-      - RHand
-  - name: fake_right_hand_controller
-    joints:
-      - RHand
-  - name: fake_left_hand_controller
-    joints:
-      - LHand
-  - name: fake_base_controller
-    joints:
-      []
-  - name: fake_head_controller
-    joints:
-      - HeadYaw
-      - HeadPitch

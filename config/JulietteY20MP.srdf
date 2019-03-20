@@ -19,16 +19,6 @@
         <group name="right_arm" />
         <group name="left_arm" />
     </group>
-    <group name="right_arm_wholebody">
-        <chain base_link="Tibia" tip_link="r_gripper" />
-    </group>
-    <group name="left_arm_wholebody">
-        <chain base_link="Tibia" tip_link="l_gripper" />
-    </group>
-    <group name="both_arms_wholebody">
-        <group name="right_arm_wholebody" />
-        <group name="left_arm_wholebody" />
-    </group>
     <group name="right_hand">
         <link name="RFinger11_link" />
         <link name="RFinger12_link" />
@@ -70,6 +60,17 @@
     </group>
     <group name="head">
         <chain base_link="torso" tip_link="Head" />
+    </group>
+    <group name="pelvis">
+        <chain base_link="Tibia" tip_link="torso" />
+    </group>
+    <group name="right_arm_wholebody">
+        <group name="pelvis" />
+        <group name="right_arm" />
+    </group>
+    <group name="left_arm_wholebody">
+        <group name="pelvis" />
+        <group name="left_arm" />
     </group>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="left_eef" parent_link="l_gripper" group="left_hand" />
