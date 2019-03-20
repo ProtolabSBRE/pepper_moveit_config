@@ -6,7 +6,7 @@
 
   <!-- Load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="JulietteY20MP" args="right_arm_controller left_arm_controller both_arms_controller right_arm_wholebody_controller left_arm_wholebody_controller both_arms_wholebody_controller right_hand_controller left_hand_controller base_controller head_controller "/>
+    output="screen" ns="JulietteY20MP" args="left_arm_controller right_arm_controller pelvis_controller head_controller left_hand_controller right_hand_controller "/>
 
   <!-- Convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"

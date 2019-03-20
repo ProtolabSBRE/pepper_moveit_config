@@ -62,6 +62,9 @@
         <chain base_link="torso" tip_link="Head" />
     </group>
     <group name="pelvis">
+        <joint name="KneePitch" />
+        <joint name="HipPitch" />
+        <joint name="HipRoll" />
         <chain base_link="Tibia" tip_link="torso" />
     </group>
     <group name="right_arm_wholebody">
