@@ -13,6 +13,7 @@ joint_limits:
     has_acceleration_limits: false
     max_acceleration: 0
   HipPitch:
+    min_position: -0.05
     has_velocity_limits: true
     max_velocity: 2.93276
     has_acceleration_limits: false
