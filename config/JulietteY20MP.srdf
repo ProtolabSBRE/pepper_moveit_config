@@ -13,11 +13,6 @@
         <chain base_link="torso" tip_link="r_gripper" />
     </group>
     <group name="left_arm">
-        <joint name="LShoulderPitch" />
-        <joint name="LShoulderRoll" />
-        <joint name="LElbowRoll" />
-        <joint name="LElbowYaw" />
-        <joint name="LWristYaw" />
         <chain base_link="torso" tip_link="l_gripper" />
     </group>
     <group name="both_arms">
@@ -313,6 +308,7 @@
     <disable_collisions link1="LFinger13_link" link2="LForeArm" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LShoulder" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="LThumb1_link" reason="Never" />
+    <disable_collisions link1="LFinger13_link" link2="LThumb2_link" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="Neck" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="RBicep" reason="Never" />
     <disable_collisions link1="LFinger13_link" link2="RElbow" reason="Never" />
@@ -866,6 +862,7 @@
     <disable_collisions link1="RFinger13_link" link2="RForeArm" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="RShoulder" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="RThumb1_link" reason="Never" />
+    <disable_collisions link1="RFinger13_link" link2="RThumb2_link" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="Tibia" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="WheelB_link" reason="Never" />
     <disable_collisions link1="RFinger13_link" link2="WheelFL_link" reason="Never" />
