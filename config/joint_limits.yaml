@@ -13,17 +13,22 @@ joint_limits:
     has_acceleration_limits: false
     max_acceleration: 0
   HipPitch:
-    min_position: -0.05
+    min_position: -0.346
+    max_position: 0.346
     has_velocity_limits: true
     max_velocity: 2.93276
     has_acceleration_limits: false
     max_acceleration: 0
   HipRoll:
+    min_position: -0.257
+    max_position: 0.257
     has_velocity_limits: true
     max_velocity: 2.27032
     has_acceleration_limits: false
     max_acceleration: 0
   KneePitch:
+    min_position: -0.1716
+    max_position: 0.1716
     has_velocity_limits: true
     max_velocity: 2.93276
     has_acceleration_limits: false
